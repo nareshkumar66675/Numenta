@@ -58,18 +58,24 @@ Project for anomaly detection
 | Isolation Forest | 21556  | 1139    |
 | Once Class SVM   | 21617  | 1078    |
 
+- Below is the anomaly description from dataset given by the creator.
 
+> The first anomaly is a planned shutdown of the machine. The second anomaly is difficult to detect and directly led to the third anomaly, a catastrophic failure of the machine.
+- By looking at the graphs, it is evident that 
+  -- *First Planned Shutdown*: It happened during the time frame **2013-12-14 to 2013-12-20**
+  -- *Second Anomaly*: It must have happened during the time frame **2014-02-03 t0 2014-02-05**
+  -- *Third Anomaly*: It must have happened during the time frame **2014-02-08 t0 2014-02-14**
 
 # Project Struture
 
 ##### Src
-- ProductDemand.py - python file exported from Jupyter
+- Numenta.py - python file exported from Jupyter
 ##### Notebooks
-- ProductDemand.ipynb - Jupyter notebook
+- Numenta.ipynb - Jupyter notebook
 ##### Data
-- External - ProductDemand Data
+- External - Numenta Data
 ##### Reports
-- Graphs - Forecast & Mean Square Error
+- Graphs - Comparisons
 
 ***
 
