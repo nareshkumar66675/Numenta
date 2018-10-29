@@ -1,64 +1,75 @@
-# Major Leagues - Football (Soccer)
+# Numenta
 
-It is a Data Regression Project
+Project for anomaly detection
 
 # What it Does?
-  - It predicts the score of a team based on the other metrics.
+  - It detects the anomalies in the given dataset
   
 # Datset Used
-- Soccer SPI : https://github.com/fivethirtyeight/data/tree/master/soccer-spi
-- ###### It contains 3 Data Files.
+- Product Demand : https://github.com/numenta/NAB/tree/master/data
+- ###### It contains many Data Files. For our detection we are going to use the below file
 
 
-        SPI Global Rankings - Ranking of all soccer teams (club)
-        SPI Global Rankings - Ranking of all International soccer teams.
-        SPI all Matches - Metrics of all the matches
-- We will be using **SPI all matches** dataset to predict the goals for each team
+        Machine_temperature_system_failure.csv: Temperature sensor data of an internal component of a large, industrial mahcine.
 
-# Regression
-- We will be applying two types of regression on data
--- **Linear Regression**
--- **Random Forest Regression**
-
-# Data Preparation
-- **NaN Values**
-  - Some of the mathces didn't have **Scores**. Those records were removed (No way to compare the prediction)
-  - Some of the other fields had NaN. Mean values of the respective column is used.
+# Anomaly Detection
+- We will be applying two types of anomaly detection on the data
+-- **Isolation Forest**
+-- **One Class SVM**
+# Feature Engineering
+- **Hours**
+  - From the timestamp, new column to denote the hour of day. *For Ex : 9 am -> 9 and 9pm -> 21*
+- **DayTime**
+  - A new column to denotes, if the temperature has been recorded in daytime or at night.
+- **Day of The Week**
+  - A new column to denote day of the week. *For Ex: Mon -> 0*
+- **Week Day**
+  - This column is used to represent if the data has been recorded in Weekday or Weekend. *For Ex: Mon -> 1 and Sun -> 0*
+- **Categories**
+  - This column represent data if its recorded in WeekEnd/WeekDay and Day/Night. *For Ex: 2013-12-02 21:15:00 -> WeekDayNight*
 
 
 # Analysis
-#### Linear Regression:
-- Data has been split into Train and Test.
-- Linear Regression has been applied for both the teams to predict the score.
-- Below graphs shows the Residual plot for both the teams.
 
-![Residual Plot 1](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/ResidualTeam1.png "Residual Plot 1")  |  ![Residual Plot 2](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/ResidualTeam2.png " Residual Plot 2")
+-- Below image shows a Machine Temperature against Time Stamp.
 
-#### Random Forest Regression:
-- 100 Decision trees has been used for the prediction.
-- Computed Decision Tree
-  - [Team 1](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/RFTree1.png)
-  - [Team 2](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/RFTree2.png)
+![Temperature Vs Time](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/TempVSTime.png "Temperature Vs Time")
+
+-- Below image shows the Comparison of Temperatures during the created Categories (i.e) WeekEnd/Weekday and Day/Night
+![Temperature Vs Time](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/TempVSCategories.png "Temperature Vs Time")
+
+#### Isolation Forest:
+- Isolation Forest has been applied on the feature engineered dataset with contaimation fraction as **0.05**
+- Below graph shows the anomalies.
+
+![Isolation Forest - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest1.png "Isolation Forest - 1")  |  ![Isolation Forest - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest2.png " Isolation Forest - 2")
+
+#### One Class SVM:
+- Once CLass SVM has been applied on the feature engineered dataset with contaimation fraction as **0.05**
+- Below graph shows the anomalies.
+
+![One Class SVM - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM1.png "One Class SVM")  |  ![One Class SVM - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM2.png " One Class SVM - 2")
 
 #### Results:
-- Random forest performed well in training data set. 
-- Linear regression model gave almost same result in both Traning and Testing.
-- Below graph shows the comparison of each model.
+- Below are the count of anomalies for both the methods.
 
-![Mean Square Error](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/MSE.png "MEan Square Error")
+| Type             | Normal | Anomaly |
+|------------------|--------|---------|
+| Isolation Forest | 21556  | 1139    |
+| Once Class SVM   | 21617  | 1078    |
+
 
 
 # Project Struture
 
 ##### Src
-- SoccerSPI.py - python file exported from Jupyter
+- ProductDemand.py - python file exported from Jupyter
 ##### Notebooks
-- SoccerSPI.ipynb - Jupyter notebook
+- ProductDemand.ipynb - Jupyter notebook
 ##### Data
-- External - SoccerSPI Data
+- External - ProductDemand Data
 ##### Reports
-- Trees - Decision Trees
-- Graphs - Residual & Mean Square Error
+- Graphs - Forecast & Mean Square Error
 
 ***
 
