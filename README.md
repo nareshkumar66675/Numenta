@@ -14,8 +14,8 @@ Project for anomaly detection
 
 # Anomaly Detection
 - We will be applying two types of anomaly detection on the data
--- **Isolation Forest**
--- **One Class SVM**
+   - **Isolation Forest**
+   - **One Class SVM**
 # Feature Engineering
 - **Hours**
   - From the timestamp, new column to denote the hour of day. *For Ex : 9 am -> 9 and 9pm -> 21*
@@ -31,24 +31,24 @@ Project for anomaly detection
 
 # Analysis
 
--- Below image shows a Machine Temperature against Time Stamp.
+- Below graph shows Machine Temperatures against Time Stamp.
 
 ![Temperature Vs Time](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/TempVSTime.png "Temperature Vs Time")
 
--- Below image shows the Comparison of Temperatures during the created Categories (i.e) WeekEnd/Weekday and Day/Night
+- Below graph shows the Comparison of Temperatures during the created Categories (i.e) WeekEnd/Weekday and Day/Night
 ![Temperature Vs Time](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/TempVSCategories.png "Temperature Vs Time")
 
 #### Isolation Forest:
 - Isolation Forest has been applied on the feature engineered dataset with contaimation fraction as **0.05**
 - Below graph shows the anomalies.
 
-![Isolation Forest - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest1.png "Isolation Forest - 1")  |  ![Isolation Forest - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest2.png " Isolation Forest - 2")
+![Isolation Forest - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest1.png "Isolation Forest - 1")    ![Isolation Forest - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/IsolationForest2.png " Isolation Forest - 2")
 
 #### One Class SVM:
 - Once CLass SVM has been applied on the feature engineered dataset with contaimation fraction as **0.05**
 - Below graph shows the anomalies.
 
-![One Class SVM - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM1.png "One Class SVM")  |  ![One Class SVM - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM2.png " One Class SVM - 2")
+![One Class SVM - 1](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM1.png "One Class SVM")    ![One Class SVM - 2](https://raw.githubusercontent.com/nareshkumar66675/Numenta/master/reports/OneClassSVM2.png " One Class SVM - 2")
 
 #### Results:
 - Below are the count of anomalies for both the methods.
